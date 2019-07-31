@@ -16,7 +16,7 @@ class LoginForm extends React.Component {
     const { email, password } = this.state;
 
     this.setState({ error: '', loading: true });
-
+    
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -26,15 +26,13 @@ class LoginForm extends React.Component {
           .auth()
           .createUserWithEmailAndPassword(email, password)
           .then(this.onLoginSuccess)
-          .catch(() => {
-            this.setState({ error: 'Authentication Failed.'});
-          })
-      })
+          .catch(this.onLoginFail)
+      });
   }
 
-  onLoginSuccess = () => {
-    this.setState({ email: '', password: '', error: '', loading: false });
-  }
+  onLoginFail = () => this.setState({ error: 'Authentication Failed', loading: false });
+
+  onLoginSuccess = () => this.setState({ email: '', password: '', error: '', loading: false });
 
   renderButton = () => {
     const { loading } = this.state;
