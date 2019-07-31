@@ -1,10 +1,11 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { registerRootComponent } from 'expo';
 import firebase from 'firebase';
 
 import firebaseConfig from '../firebaseConfig';
 import { Header } from './components/common';
+import LoginForm from './components/LoginForm';
 
 class App extends React.Component {
   componentDidMount() {
@@ -15,7 +16,7 @@ class App extends React.Component {
     return (
       <View>
         <Header headerText="Authentication" />
-        <Text>Yo!</Text>
+        <LoginForm />
       </View>
     );
   }
