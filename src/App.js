@@ -1,22 +1,25 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { registerRootComponent } from 'expo';
+import firebase from 'firebase';
 
-const App = () => {
-  return (
-    <View style={styles.container}>
-      <Text>Yo!</Text>
-    </View>
-  );
+import firebaseConfig from '../firebaseConfig';
+import { Header } from './components/common';
+
+class App extends React.Component {
+  componentDidMount() {
+    firebase.initializeApp(firebaseConfig);
+  }
+
+  render() {
+    return (
+      <View>
+        <Header headerText="Authentication" />
+        <Text>Yo!</Text>
+      </View>
+    );
+  }
+
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default registerRootComponent(App);
