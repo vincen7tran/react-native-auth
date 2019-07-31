@@ -12,7 +12,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('firebase', firebaseConfig);
     return (
       <View>
         <Header headerText="Authentication" />
