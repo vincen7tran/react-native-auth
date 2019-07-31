@@ -12,7 +12,7 @@ class LoginForm extends React.Component {
   }
 
   onButtonPress = () => {
-    const { email, password } = this.statel
+    const { email, password } = this.state;
 
     firebase
       .auth()
